@@ -20,29 +20,17 @@
     </div>
 </div>
 
-<!-- Password Field -->
-<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-    {!! Form::label('password', 'Password', ['class' => 'col-sm-3 control-label']) !!}
-    <div class="col-sm-6">
-        {!! Form::password('password', ['class' => 'form-control']) !!}
-        <span class="help-block text-danger">
-            {{ $errors -> first('password') }}
-        </span>
-    </div>
-</div>
-
-<!-- Password Confirmation Field -->
-<div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-    {!! Form::label('password_confirmation', 'Conform Password', ['class' => 'col-sm-3 control-label']) !!}
-    <div class="col-sm-6">
-        {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
-        <span class="help-block text-danger">
-            {{ $errors -> first('password_confirmation') }}
-        </span>
-    </div>
-</div>
-
 <div class="form-group row">
     <label class="" for="cover_image">Select a file:</label>
     <input type="file" id="cover_image" name="cover_image">                           
+</div>
+
+<div class="form-group row">
+    <label class="" for="gender">male:</label>
+    <input type="radio" id="gender" name="gender" value="male">                           
+</div>
+
+<div class="form-group row">
+    <label class="" for="gender">female:</label>
+    <input type="radio" id="gender" name="gender" value="female">                           
 </div>
