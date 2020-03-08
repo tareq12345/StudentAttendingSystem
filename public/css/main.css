@@ -1,0 +1,53 @@
+/* Professor's Home */
+.professor-home, 
+.update-profile,
+.view-attendance,
+.courses,
+.qr-code {
+  margin: 50px 0;
+}
+
+.professor-home .heading h4 {
+  color: #262626;
+}
+
+.professor-home .home-content {
+  margin: 100px 0;
+}
+
+.professor-home .home-content a {
+  background: #f3f3f3;
+  padding: 20px;
+}
+
+/* update professor profile */
+.update-profile .heading h4 {
+  margin-bottom: 30px;
+}
+
+.update-profile .profile-fields {
+  margin-bottom: 50px;
+}
+
+.profile-password {
+  margin-top: 30px;
+}
+
+/* view attendance */
+.view-attendance .heading h4 {
+  margin-bottom: 30px;
+}
+
+.view-attendance .attendance-info h4 {
+  margin-bottom: 30px;
+}
+
+.view-attendance .attendance-history h4 {
+  margin-bottom: 30px;
+}
+
+
+/* courses */
+.courses .heading h4 {
+  margin-bottom: 30px;
+}
