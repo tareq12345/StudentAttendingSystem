@@ -10,4 +10,8 @@ class Student extends Model
     {
       return $this->belongsToMany('App\Course')->withTimestamps();
     }
+
+    public function user() {
+      return $this->morphOne('App\User', 'userable');
+  }
 }
