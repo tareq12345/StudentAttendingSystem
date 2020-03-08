@@ -6,7 +6,7 @@
             <img src="/storage/cover_image/{{$user->cover_image}}" alt="">
         </div>
         <div class="col-md-6 col-sm-6">
-            <h1>User Profile</h1>
+            <h1>{{ Auth::user()->name }}</h1>
         </div>
     </div>
     
