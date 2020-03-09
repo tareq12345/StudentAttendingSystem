@@ -1,48 +1,34 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    <a href="/toDos/create" class="btn = btn-primary">Create ToDo</a>
-                    <h3 class="mt-2">Your ToDos</h3>
-                    @if(count($posts) > 0)
-                    <table class="table table-striped">
-                        <tr>
-                            <th>title</th>
-                            <th>Status</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                        @foreach($posts as $post)
-                            <tr>
-                                <td>{{$post->name}}</td>
-                                <td>{{$post->status->type}}</td>
-                                <td><a href="/toDos/{{$post->id}}/edit" class="btn btn-default">Edit</a></td>
-                                <td>
-                                    {!!Form::open(['action' => ['ToDosController@destroy', $post->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
-                                    {{Form::hidden('_method', 'DELETE')}}
-                                    {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
-                                    {!!Form::close()!!}                                  
-                                </td>
-                            </tr>
-                        @endforeach
-                    </table> 
-                    @else
-                    <p>You Have no ToDos</p>                  
-                    @endif
+    <!-- Professor's Home -->
+    <div class="professor-home">
+        <div class="container">
+            <div class="heading">
+                <h4 class="text-uppercase text-center">Professor Dashboard</h4>
+            </div>
+            <div class="home-content text-center">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <a href="update-profile.html">Manage profile</a>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <a href="view-attendance.html">Manage Attendance</a>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <a href="courses.html">Manage Courses</a>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <a href="qr-code.html">Manage QR code</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
 @endsection

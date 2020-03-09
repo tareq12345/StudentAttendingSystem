@@ -77,8 +77,9 @@ class UserController extends Controller
         $this->validate($request, [
             'name'      => 'required',
             'email'     => 'required|email',
-            'password'  => 'confirmed',
-            'cover_image' => 'image|nullable|max:1999'
+            //'password'  => 'confirmed',
+            'cover_image' => 'image|nullable|max:1999',
+            'gender' => 'required'
         ]);
 
         // File handle
@@ -97,9 +98,11 @@ class UserController extends Controller
 
         $user->name     = $request->get('name');
         $user->email    = $request->get('email');
-        if($request->get('password') !== ''){
-            $user->password = $request->get('password');
-        }
+        $user->gender   = $request->get('gender');
+
+        // if($request->get('password') !== ''){
+        //     $user->password = $request->get('password');
+        // }
 
         if($request->hasFile('cover_image')){
             $user->cover_image = $fileImageToStore;
