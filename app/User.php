@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Professor;
 
 class User extends Authenticatable
 {
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','cover_image'
+        'name', 'email', 'password', 'cover_image','gender','userable_type','userable_id','role_id', 'userable_id'
     ];
 
     /**
@@ -37,7 +38,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function todos(){
-        return $this->hasMany('App\ToDoList');
+    public function userable() {
+        return $this->morphTo();
+    }
+
+    public function role() {
+        return $this->belongsTo('App\Role');
     }
 }

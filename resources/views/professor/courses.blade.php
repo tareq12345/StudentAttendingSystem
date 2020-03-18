@@ -1,42 +1,45 @@
 @extends('layouts.app')
 
-@section('name')
-     <!-- courses -->
-     <div class="courses">
-        <div class="container">
-            <div class="heading">
-                <h4 class="text-uppercase text-left">Courses</h4>
-            </div>
-            <div class="courses-table">
-                <table class="table">
-                    <thead class="thead-dark"> 
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Dashboard</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    <h3 class="mt-2">Your Courses</h3>
+                    @if(count($courses) >  0)
+                    <table class="table table-striped">
                         <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Level</th>
-                            <th scope="col">Department</th>
-                            <th scope="col">Date</th>
+                            <th>title</th>
+                            <th>level</th>
+                            <th>department</th>
+                            <th>QR Code</th>
+                            <th>date</th>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th>K!M</th>
-                            <td>IA</td>
-                            <td>Monday 10</td>
-                            <td>3</td>
-                            <td>
-                                <a href="qr-code.html">Generate QR code</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                        @foreach($courses as $course)
+                            <tr>
+                                <td>{{$course->course_name}}</td>
+                                <td>{{$course->level->level_name}}</td>
+                                <td>{{$course->department->dept_name ?? '---'}}</td>
+                                <td><a href="QR-Scanner-Generator-master/index.php" class="">Generate QR Code</a></td>
+                                {{-- <td>{{$post->status->type}}</td> --}}
+                                <td>{{$course->lectures[0]->lec_time ?? '---'}}</td>
+                            </tr>
+                        @endforeach
+                    </table> 
+                    @else
+                    <p>You Have no courses</p>                  
+                    @endif
+                </div>
             </div>
         </div>
     </div>
-    
-
-
-    <script src="js/jquery-3.2.1.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+</div>
 @endsection

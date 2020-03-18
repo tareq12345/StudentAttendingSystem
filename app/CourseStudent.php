@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class StudentCourse extends Model
+class CourseStudent extends Model
 {
     //
 }
