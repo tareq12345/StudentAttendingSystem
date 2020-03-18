@@ -20,6 +20,13 @@
 // });
 
 
+if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
+    // Ignores notices and reports all other kinds... and warnings
+    error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+    // error_reporting(E_ALL ^ E_WARNING); // Maybe this is enough
+}
+
+
 
 Route::get('/services','PagesController@services');
 
@@ -35,4 +42,16 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/doctor','UserController@index');
+Route::resource('/doctor','ProfessorsController');
+
+Route::resource('/admin','AdminController');
+
+Route::get('/courses','AdminController@courses');
+
+Route::get('/admins','AdminController@admins');
+
+Route::get('/professors','AdminController@professors');
+
+// Route::post('/student','AdminController@storeStudent');
+
+// Route::get('/create/student','AdminController@createStudent');
