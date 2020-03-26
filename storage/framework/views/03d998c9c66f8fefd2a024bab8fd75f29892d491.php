@@ -26,35 +26,49 @@
     </div>
 </div>
 
-<!-- Password Field -->
-<div class="form-group<?php echo e($errors->has('password') ? ' has-error' : ''); ?>">
-    <?php echo Form::label('password', 'Password', ['class' => 'col-sm-3 control-label']); ?>
+<?php if(Auth::user()->role_id == 2 || $user->role_id == 2): ?>
+    <div class="form-group<?php echo e($errors->has('qualification') ? ' has-error' : ''); ?>">
+        <?php echo Form::label('qualification', 'Qualification', ['class' => 'col-sm-3 control-label']); ?>
 
-    <div class="col-sm-6">
-        <?php echo Form::password('password', ['class' => 'form-control']); ?>
+        <div class="col-sm-3">
+            <?php echo Form::text('qualification', $user->userable->qualification, ['class' => 'form-control']); ?>
 
-        <span class="help-block text-danger">
-            <?php echo e($errors -> first('password')); ?>
+            <span class="help-block text-danger">
+                <?php echo e($errors -> first('qualification')); ?>
 
-        </span>
+            </span>
+        </div>
     </div>
-</div>
+<?php endif; ?>
 
-<!-- Password Confirmation Field -->
-<div class="form-group<?php echo e($errors->has('password_confirmation') ? ' has-error' : ''); ?>">
-    <?php echo Form::label('password_confirmation', 'Conform Password', ['class' => 'col-sm-3 control-label']); ?>
+<?php if(Auth::user()->role_id == 1 && $user->role->id == 1): ?>
+    <div class="form-group<?php echo e($errors->has('phone') ? ' has-error' : ''); ?>">
+        <?php echo Form::label('phone', 'Phone', ['class' => 'col-sm-3 control-label']); ?>
 
-    <div class="col-sm-6">
-        <?php echo Form::password('password_confirmation', ['class' => 'form-control']); ?>
+        <div class="col-sm-3">
+            <?php echo Form::text('phone', Auth::user()->userable->phone, ['class' => 'form-control']); ?>
 
-        <span class="help-block text-danger">
-            <?php echo e($errors -> first('password_confirmation')); ?>
+            <span class="help-block text-danger">
+                <?php echo e($errors -> first('phone')); ?>
 
-        </span>
+            </span>
+        </div>
     </div>
-</div>
+<?php endif; ?>
 
-<div class="form-group row">
+<div class="form-group row col-sm-6">
     <label class="" for="cover_image">Select a file:</label>
     <input type="file" id="cover_image" name="cover_image">                           
-</div><?php /**PATH C:\laragon\www\gapp\resources\views/users/_form.blade.php ENDPATH**/ ?>
+</div>
+
+<div class="mb-2">Select gender:</div>
+<div class="form-group row col-sm-6">
+    <label class="" for="gender">male:</label>
+    <input type="radio" id="gender" name="gender" value="male">                           
+</div>
+
+<div class="form-group row col-sm-6">
+    <label class="" for="gender">female:</label>
+    <input type="radio" id="gender" name="gender" value="female">                           
+</div>
+<?php /**PATH C:\laragon\www\gapp\resources\views/users/_form.blade.php ENDPATH**/ ?>

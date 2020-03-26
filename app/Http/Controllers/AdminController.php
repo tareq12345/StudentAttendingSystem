@@ -221,8 +221,69 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($courseId)
     {
         //
+    }
+
+    public function assignCourse(Request $request,$course_id){
+        $this->validate($request, [
+            'student_email' => 'nullable|string|email|max:255|',
+            'professor_email' => ['nullable', 'string', 'email', 'max:255', ],
+        ]);
+
+        if($request->get('student_email') == '' && $request->get('professor_email') == ''){
+            $course = Course::all();
+            return redirect('/courses')->with('courses',$course);
+        }
+
+        elseif($request->get('student_email') != '' && $request->get('professor_email') == ''){
+            // assign course to student.
+            
+            $user = User::where('email', '=', $request->get('student_email'))->first();
+            if(!$user || $user->role_id != 3) {
+                // handle the case if no user is found
+                return redirect('/courses')->with('courses',$course)->with('error','Student not found');
+              }
+            $userable = $user['userable'];
+            $userable->courses()->attach($course_id);  
+            $course = Course::all();
+            return redirect('/courses')->with('courses',$course)->with('success','Course Assigned');
+        }
+        elseif($request->get('professor_email') != '' && $request->get('student_email') == ''){
+            // assign course to professor
+            $user = User::where('email', '=', $request->get('professor_email'))->first();
+            if(!$user || $user->role_id != 2) {
+                // handle the case if no user is found
+                return redirect('/courses')->with('courses',$course)->with('error','Professot not found');
+              }
+            $userable = $user['userable'];
+            $userable->courses()->attach($course_id); 
+            $course = Course::all();
+            return redirect('/courses')->with('courses',$course)->with('success','Course Assigned'); 
+        }
+        else{
+            // assign course to student and professor
+            
+            $student = User::where('email', '=', $request->get('student_email'))->first();
+            $professor = User::where('email', '=', $request->get('professor_email'))->first();
+
+            if(!$student || $student->role_id != 3) {
+                // handle the case if no user is found
+                return redirect('/courses')->with('courses',$course)->with('error','Student not found');
+              }
+            if(!$professor || $professor->role_id != 2) {
+                // handle the case if no user is found
+                return redirect('/courses')->with('courses',$course)->with('error','Peofessor not found');
+              }
+            $userable = $student['userable'];
+            $userable->courses()->attach($course_id);  
+
+            $userable = $professor['userable'];
+            $userable->courses()->attach($course_id);  
+
+            $course = Course::all();
+            return view('admin.courses')->with('courses',$course)->with('success','Course Assigned');
+        }
     }
 }

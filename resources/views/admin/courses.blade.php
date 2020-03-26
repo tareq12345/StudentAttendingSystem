@@ -52,6 +52,19 @@
                                             <img src="/storage/cover_image/{{$professor->user->cover_image}}" alt="" wisth="20" height="20">
                                         </div>
                                     </td>
+                                    <td>
+                                    {!!Form::open(['action' => ['AdminController@assignCourse', $course->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
+                                        {!! Form::text('student_email', 'kareemhbendary86@gmail.com', ['class' => 'form-control']) !!}
+                                        <span class="help-block text-danger">
+                                            {{ $errors -> first('email') }}
+                                        </span>   
+                                        {!! Form::text('professor_email', 'kareemhbendary86@gmail.com', ['class' => 'form-control']) !!}
+                                        <span class="help-block text-danger">
+                                            {{ $errors -> first('email') }}
+                                        </span>                                     
+                                        {{Form::submit('Assign', ['class' => 'btn btn-primary'])}}
+                                    {!!Form::close()!!}
+                                    </td>
                                 </tr>
                         @endforeach
                         </tbody>

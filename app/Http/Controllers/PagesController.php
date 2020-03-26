@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class PagesController extends Controller
 {
     //
     public function index(){
-        $title = "Wlecome to ToDo List App.";
+        $title = "Wlecome to Student Attending System App.";
         // return view('pages.index',compact('title'));
+            
         return view('pages.index')->with('title',$title);
     }
 
