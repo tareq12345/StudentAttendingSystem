@@ -8,13 +8,13 @@
             <div class="home-content text-center">
                 <div class="row">
                     <div class="col-md-3 col-sm-6">
-                        <a href="update-profile.html">Manage profile</a>
+                        <a class="" href="<?php echo e(route('User.edit', \Auth::user()->id)); ?>">Manage Profile</a>
                     </div>
                     <div class="col-md-3 col-sm-6">
-                        <a href="view-attendance.html">Manage Attendance</a>
+                        <a href="/doctor">Manage Student</a>
                     </div>
                     <div class="col-md-3 col-sm-6">
-                        <a href="courses.html">Manage Courses</a>
+                        <a href="/doctor/create">Manage Courses</a>
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <a href="qr-code.html">Manage QR code</a>

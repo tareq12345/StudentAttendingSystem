@@ -56,13 +56,6 @@ Route::get('/professors','AdminController@professors');
 
 // Route::get('/create/student','AdminController@createStudent');
 
-Route::get('qr-code-g', function () {
-    \QrCode::size(500)
-              ->format('png')
-              ->generate('ItSolutionStuff.com', public_path('images/qrcode.png'));
-      
-    return view('qrCode');
-      
-  });
+Route::get('qr-code-g','QrCodeController@qrGenerator');
 
   Route::post('/assign/course/{courseId}','AdminController@assignCourse');
