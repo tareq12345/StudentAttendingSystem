@@ -13,11 +13,11 @@ class CreateProfessorCoursesTable extends Migration
      */
     public function up()
     {
-        Schema::create('professor_courses', function (Blueprint $table) {
+        Schema::create('course_professor', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
             $table->integer('professor_id');
-            $table->integer('student_id');
+            $table->integer('course_id');
         });
     }
 
@@ -28,6 +28,6 @@ class CreateProfessorCoursesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('professor_courses');
+        Schema::dropIfExists('course_professor');
     }
 }

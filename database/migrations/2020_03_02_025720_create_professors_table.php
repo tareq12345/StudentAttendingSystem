@@ -16,8 +16,8 @@ class CreateProfessorsTable extends Migration
         Schema::create('professors', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->integer('role_id');
-            $table->integer('user_id');
+            // $table->integer('role_id');
+            // $table->integer('user_id');
             $table->string('qualification');
             $table->date('date_of_birth');
         });

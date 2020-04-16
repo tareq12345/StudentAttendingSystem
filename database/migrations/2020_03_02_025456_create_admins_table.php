@@ -17,8 +17,8 @@ class CreateAdminsTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->integer('phone');
-            $table->integer('role_id');
-            $table->integer('user_id');
+            // $table->integer('role_id');
+            // $table->integer('user_id');
         });
     }
 
