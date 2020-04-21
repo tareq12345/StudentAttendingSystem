@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Professor;
+use App\Admin;
 
 class RegisterController extends Controller
 {
@@ -87,15 +88,15 @@ class RegisterController extends Controller
             $fileImageToStore = 'noimage.jpg';
         }
         
-        $professor = new Professor;
-        $professor->date_of_birth = '2020-03-8';
-        $professor->qualification = 'Phd';
+        $professor = new Admin;
+        $professor->phone = '2020-03-8';
+        // $professor->qualification = 'Phd';
         $professor->save();
 
-        $userable_type = 'App\Professor' ;
+        $userable_type = 'App\Admin' ;
 
         if($request->get('role_id') == ''){
-            $role_id = 2;
+            $role_id = 1;
         }
 
         return User::create([
