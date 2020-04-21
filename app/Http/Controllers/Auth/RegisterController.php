@@ -89,7 +89,7 @@ class RegisterController extends Controller
         }
         
         $professor = new Admin;
-        $professor->phone = '2020-03-8';
+        $professor->phone = 2020-03-8;
         // $professor->qualification = 'Phd';
         $professor->save();
 
