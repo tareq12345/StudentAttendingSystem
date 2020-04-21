@@ -18,9 +18,9 @@
                     <div class="col-md-3 col-sm-6">
                         <a href="/courses.html">Courses</a>
                     </div>
-                    <div class="col-md-3 col-sm-6">
+                    <!-- <div class="col-md-3 col-sm-6">
                         <a href="/qr-code.html">QR code</a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
