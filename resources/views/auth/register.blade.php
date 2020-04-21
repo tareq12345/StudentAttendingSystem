@@ -62,18 +62,25 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right" for="cover_image">Select a file:</label>
-                            <input type="file" id="cover_image" name="cover_image">                           
+                            <label class="col-md-4 col-form-label text-md-right" for="cover_image">Select Image:</label>
+                            <div class="col-md-6">
+                                <input type="file" id="cover_image" name="cover_image">    
+                            </div>                    
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right" for="gender">male:</label>
-                            <input type="radio" id="gender" name="gender" value="male">                           
+                            <label class="col-md-4 col-form-label text-md-right" for="gender">Male:</label>
+                            <div class="col-md-6">
+                                <input type="radio" id="gender" name="gender" value="male">          
+                            </div>
+                                                 
                         </div>
                         
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right" for="gender">female:</label>
-                            <input type="radio" id="gender" name="gender" value="female">                           
+                            <div class="col-md-6">
+                                <input type="radio" id="gender" name="gender" value="female">          
+                            </div>                          
                         </div>
 
                         <div class="form-group row mb-0">

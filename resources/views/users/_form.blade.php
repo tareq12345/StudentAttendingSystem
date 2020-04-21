@@ -44,12 +44,32 @@
     </div>
 @endif
 
-<div class="form-group row col-sm-6">
-    <label class="" for="cover_image">Select a file:</label>
-    <input type="file" id="cover_image" name="cover_image">                           
+
+
+<div class="form-group">
+    <label class="col-sm-3 control-label " for="cover_image">Select a file:</label>
+    <div class="col-sm-3">
+        <input class="form-control " type="file" id="cover_image" name="cover_image"> 
+    </div>                          
 </div>
 
-<div class="mb-2">Select gender:</div>
+<div class="form-group">
+    <label class="col-sm-3 control-label " for="gender">Select gender:</label>
+    <div class="col-sm-1">
+    <label class="" for="gender">male:</label>
+        <input class="" type="radio" id="gender" name="gender" value="male"> 
+    </div>                          
+</div>
+
+
+<div class="form-group">
+    <div class="col-sm-3">
+    <label class="" for="gender">female:</label>
+        <input class="" type="radio" id="gender" name="gender" value="female"> 
+    </div>                          
+</div>
+
+<!-- <div class="mb-2">Select gender:</div>
 <div class="form-group row col-sm-6">
     <label class="" for="gender">male:</label>
     <input type="radio" id="gender" name="gender" value="male">                           
@@ -58,4 +78,4 @@
 <div class="form-group row col-sm-6">
     <label class="" for="gender">female:</label>
     <input type="radio" id="gender" name="gender" value="female">                           
-</div>
+</div> -->
