@@ -16,9 +16,9 @@
                     <div class="col-md-3 col-sm-6">
                         <a href="/doctor/create">Manage Courses</a>
                     </div>
-                    <div class="col-md-3 col-sm-6">
+                    <!-- <div class="col-md-3 col-sm-6">
                         <a href="qr-code.html">Manage QR code</a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

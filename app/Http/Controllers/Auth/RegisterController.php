@@ -88,17 +88,16 @@ class RegisterController extends Controller
             $fileImageToStore = 'noimage.jpg';
         }
         
-        $professor = new Admin;
-        $professor->phone = 2020-03-8;
-        // $professor->qualification = 'Phd';
+        $professor = new Professor;
+        $professor->date_of_birth = '2020-03-8';
+        $professor->qualification = 'Phd';
         $professor->save();
 
-        $userable_type = 'App\Admin' ;
+        $userable_type = 'App\Professor' ;
 
         if($request->get('role_id') == ''){
-            $role_id = 1;
+            $role_id = 2;
         }
-
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
