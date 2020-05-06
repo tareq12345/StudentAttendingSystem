@@ -25,8 +25,7 @@
                             <a href="/admin/create" class="list-group-item list-group-item-action text-uppercase">Create Course</a>
                             <a href="/admins" class="list-group-item list-group-item-action text-uppercase">Manage Admins</a>
                             <a href="/student/create" class="list-group-item list-group-item-action text-uppercase">Create Students</a>
-                            <a href="#" class="list-group-item list-group-item-action text-uppercase">Manage Levels</a>
-                            <a href="qr-code-g" class="list-group-item list-group-item-action text-uppercase">Manage Qr Code</a>
+                            
                         </div>
                     </div>
                 </div>
