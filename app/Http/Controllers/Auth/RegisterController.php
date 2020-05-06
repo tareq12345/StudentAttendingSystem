@@ -85,7 +85,7 @@ class RegisterController extends Controller
             $path = $request->file('cover_image')->storeAs('public/cover_image',$fileImageToStore);
         }
         else {
-            $fileImageToStore = 'noimage.jpg';
+            $fileImageToStore = 'default.png';
         }
         
         $professor = new Professor;

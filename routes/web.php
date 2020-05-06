@@ -44,6 +44,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/doctor','ProfessorsController');
 
+Route::resource('/student','StudentController');
+
 Route::resource('/admin','AdminController');
 
 Route::get('/courses','AdminController@courses');
@@ -54,8 +56,8 @@ Route::get('/professors','AdminController@professors');
 
 // Route::post('/student','AdminController@storeStudent');
 
-// Route::get('/create/student','AdminController@createStudent');
+Route::get('/create/student','AdminController@createStudent');
 
 Route::get('qr-code-g','QrCodeController@qrGenerator');
 
-  Route::post('/assign/course/{courseId}','AdminController@assignCourse');
+Route::post('/assign/course/{courseId}','AdminController@assignCourse');

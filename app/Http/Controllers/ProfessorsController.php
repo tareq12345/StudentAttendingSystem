@@ -49,7 +49,7 @@ class ProfessorsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

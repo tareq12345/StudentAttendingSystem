@@ -8,8 +8,9 @@
                 <div class="card-header">{{ __('Create Student') }}</div>
 
                 <div class="card-body">
-                    <form action='UserController@store' method="POST" enctype="multipart/form-data">
-                        {{ method_field('POST') }}
+                    <form action='/student' method="POST" enctype="multipart/form-data">
+                        @csrf
+                        
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
@@ -95,10 +96,10 @@
                             <label  class="col-md-4 col-form-label text-md-right" for="adress">Address</label>
                             <div class="col-md-6">
                                 <!-- {{Form::textarea('adress','',[ 'placeholder' => 'adress'])}} -->
-                                <textarea class="form-control" id="adress" rows="3"></textarea>
+                                <textarea class="form-control" id="adress" rows="3" name="adress"></textarea>
                             </div>    
                          </div>
-
+                         <!-- {{Form::hidden('_method','POST')}} -->
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

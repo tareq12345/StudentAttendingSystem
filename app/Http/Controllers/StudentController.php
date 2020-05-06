@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use App\Role;
-use App\Professor;
 use App\Student;
 
-class UserController extends Controller
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $title = "Wlecome to Student Attending System Project.";
-        // return view('pages.index',compact('title'));   
-        return view('professor.professor')->with('title',$title);
-        
+        return "test";
     }
 
     /**
@@ -30,7 +24,6 @@ class UserController extends Controller
      */
     public function create()
     {
-        
         if (auth()->user()->role_id != 1) {
             return response()->view('errors.403');
         }
@@ -55,15 +48,15 @@ class UserController extends Controller
             'gender' => 'required',
             'adress' => 'required',
         ]);
-
+            
         // Create student
         $student = new Student;
         $student->date_of_birth = $request->input('date_of_birth');
-        $student->adress = $request->input('adress');;
+        $student->adress = $request->input('adress');
         $student->level_id = '1';
         $student->department_id = '1';
         $student->save();
-        
+        return $student->adress;
         $role_id = 3;
         $userable_type = 'App\Student' ;
         User::create([
@@ -79,7 +72,6 @@ class UserController extends Controller
 
        
         return redirect('/home')->with('success','Student Created');
-        // return $request->input('course_dat');
     }
 
     /**
@@ -90,8 +82,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-        return view('users.profile')->with('user',$user);
+        //
     }
 
     /**
@@ -102,8 +93,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('users.profile')->with('user',$user);
+        //
     }
 
     /**
@@ -115,65 +105,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user_id = auth()->user()->id;
-        if (auth()->user()->role_id != 2 && auth()->user()->role_id != 1) {
-            return response()->view('errors.403');
-        }
-        // find data
-        $user = User::find($id);
-        $this->validate($request, [
-            'name'      => 'required',
-            'email'     => 'required|email',
-            //'password'  => 'confirmed',
-            'cover_image' => 'image|nullable|max:1999',
-            'gender' => 'required',
-            'qualification' => 'nullable',
-            'phone' => 'nullable'
-        ]);
-
-        // professor haandle
-        if ($user->role_id == 2) {
-            $userable = $user['userable'];
-            $userable->qualification = $request->get('qualification');
-            $userable->save();
-        }
-
-        // admin handle
-        if (auth()->user()->role_id == 1 && $user->role->role_name == 'Admin') {
-            $userable = $user['userable'];
-            $userable->phone = $request->get('phone');
-            $userable->save();
-        }
-
-        // File handle
-        if($request->hasFile('cover_image')){
-            // Get file name with extenstion
-            $fileNameWithExt = $request->file('cover_image')->getClientOriginalName();
-            // get just filename
-            $filename = pathinfo($fileNameWithExt,PATHINFO_FILENAME);
-            // get just ext
-            $extension = $request->file('cover_image')->getClientOriginalExtension();
-            // Filename to store
-            $fileImageToStore = $filename.'_'.time().'.'.$extension;
-            // upload image
-            $path = $request->file('cover_image')->storeAs('public/cover_image',$fileImageToStore);
-        }
-
-        $user->name     = $request->get('name');
-        $user->email    = $request->get('email');
-        $user->gender   = $request->get('gender');
-
-        // if($request->get('password') !== ''){
-        //     $user->password = $request->get('password');
-        // }
-
-        if($request->hasFile('cover_image')){
-            $user->cover_image = $fileImageToStore;
-        }
-        
-        $user->save();
-
-        return redirect('/home')->with('success','Updated Successfully');
+        //
     }
 
     /**

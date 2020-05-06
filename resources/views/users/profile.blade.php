@@ -5,14 +5,14 @@
         <div class="col-md-2 col-sm-2">
             <img src="/storage/cover_image/{{$user->cover_image}}" alt="" width="200" height="200">
         </div>
-        <div class="col-md-2 col-sm-2 ml-3">
+        <div class="col-md-4 col-sm-2 ml-3">
             <h1>{{ $user->name ?? '---' }}</h1>
         </div>
     </div>
     
     <hr/>
 
-    {!! Form::model($user, ['method' => 'POST', 'route' => ['User.update', $user->id], 'class' => 'form-horizontal', 'role' => 'form' , 'enctype' => "multipart/form-data"]) !!}
+    {!! Form::model($user, ['method' => 'POST', 'route' => ['User.update', Auth::user()->id], 'class' => 'form-horizontal', 'role' => 'form' , 'enctype' => "multipart/form-data"]) !!}
         @include('users._form')
 
         <!-- submit button -->
