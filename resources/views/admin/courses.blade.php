@@ -13,13 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                @if(is_array($courses) || is_object($courses))
-                    @foreach ($courses as $item)
-                        @if(count($item->students) > 0)
-                            <h1>this shit works</h1>
-                        @endif
-                    @endforeach
-                @endif
+               
                 
                 @if(count($courses) > 0)
                 <div class="students-table">
@@ -42,9 +36,6 @@
                                     {{-- <td> <a href="/User/{{$professor->user->id}}/edit">{{$course->course_name ?? '---'}}</a></td> --}}
                                     <td>{{$course->level->level_name ?? '---'}}</td>
                                     <td>{{$course->department->dept_name ?? '---'}}</td>
-                                    {{-- <td>{{data_get($course, 'students.user.email', '---') }}</td> --}}
-                                    {{-- <td>{{$item->user->phone ?? '---'}}</td> --}}
-                                    {{-- <td>{{$item->pivot->course_id}}</td> --}}
                                     <td>{{$professor->courses[0]->course_name ?? '---'}}</td>
                                     <td>{{$professor->qualification ?? '---'}}</td>
                                     <td>
@@ -54,11 +45,11 @@
                                     </td>
                                     <td>
                                     {!!Form::open(['action' => ['AdminController@assignCourse', $course->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
-                                        {!! Form::text('student_email', 'kareemhbendary86@gmail.com', ['class' => 'form-control']) !!}
+                                        {!! Form::text('student_email', ['class' => 'form-control']) !!}
                                         <span class="help-block text-danger">
                                             {{ $errors -> first('email') }}
                                         </span>   
-                                        {!! Form::text('professor_email', 'kareemhbendary86@gmail.com', ['class' => 'form-control']) !!}
+                                        {!! Form::text('professor_email', ['class' => 'form-control']) !!}
                                         <span class="help-block text-danger">
                                             {{ $errors -> first('email') }}
                                         </span>                                     
