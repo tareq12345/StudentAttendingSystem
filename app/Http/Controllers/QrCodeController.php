@@ -7,13 +7,14 @@ use App\Course;
 
 class QrCodeController extends Controller
 {
-    public function qrGenerator()
+    public function qrGenerator($course_name)
     {
-        $course = Course::find(1);
+        // $course = Course::find($id);
+        // $course_name = "IR";
         \QrCode::size(500)
               ->format('png')
-              ->generate($course->course_name, public_path('images/qrcode.png'));
+              ->generate($course_name, public_path('images/qrcode.png'));
       
-        return view('qrCode')->with('course',$course);
+        return view('qrCode')->with('course_name',$course_name);
     }
 }

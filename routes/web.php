@@ -58,6 +58,6 @@ Route::get('/professors','AdminController@professors');
 
 Route::get('/create/student','AdminController@createStudent');
 
-Route::get('qr-code-g','QrCodeController@qrGenerator');
+Route::get('doctor/qr-code-g/{course_name}','QrCodeController@qrGenerator');
 
 Route::post('/assign/course/{courseId}','AdminController@assignCourse');
