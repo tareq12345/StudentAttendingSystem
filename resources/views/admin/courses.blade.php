@@ -36,6 +36,7 @@
                                     {{-- <td> <a href="/User/{{$professor->user->id}}/edit">{{$course->course_name ?? '---'}}</a></td> --}}
                                     <td>{{$course->level->level_name ?? '---'}}</td>
                                     <td>{{$course->department->dept_name ?? '---'}}</td>
+
                                     <td>{{$professor->courses[0]->course_name ?? '---'}}</td>
                                     <td>{{$professor->qualification ?? '---'}}</td>
                                     <td>
@@ -45,14 +46,22 @@
                                     </td>
                                     <td>
                                     {!!Form::open(['action' => ['AdminController@assignCourse', $course->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
-                                        {!! Form::text('student_email', ['class' => 'form-control']) !!}
-                                        <span class="help-block text-danger">
-                                            {{ $errors -> first('email') }}
-                                        </span>   
-                                        {!! Form::text('professor_email', ['class' => 'form-control']) !!}
-                                        <span class="help-block text-danger">
-                                            {{ $errors -> first('email') }}
-                                        </span>                                     
+                                        <div>
+                                        <input id="student_email" type="email" class="form-control @error('email') is-invalid @enderror" name="student_email" value="{{ old('email') }}"  autocomplete="email" autofocus>
+
+                                        @error('student_email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                        </div>
+                                        <input id="professor_email" type="email" class="form-control @error('email') is-invalid @enderror" name="professor_email" value="{{ old('email') }}"  autocomplete="email" autofocus>
+
+                                        @error('professor_email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror                              
                                         {{Form::submit('Assign', ['class' => 'btn btn-primary'])}}
                                     {!!Form::close()!!}
                                     </td>
