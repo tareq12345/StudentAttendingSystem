@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Professor;
 
 class RegisterController extends Controller
 {
@@ -54,7 +55,9 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'cover_image' => 'image|nullable|max:1999',
-            'gender' => 'required'
+            'gender' => 'required',
+            'role_id' => 'nullable',
+            'userable_id' => 'nullable'
         ]);
     }
 
@@ -83,12 +86,27 @@ class RegisterController extends Controller
         else {
             $fileImageToStore = 'noimage.jpg';
         }
+        
+        $professor = new Professor;
+        $professor->date_of_birth = '2020-03-8';
+        $professor->qualification = 'Phd';
+        $professor->save();
+
+        $userable_type = 'App\Professor' ;
+
+        if($request->get('role_id') == ''){
+            $role_id = 2;
+        }
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'cover_image' => $fileImageToStore,
-            'gender' => $request->get('gender')
+            'gender' => $request->get('gender'),
+            'role_id' => $role_id,
+            'userable_id' => $professor->id,
+            'userable_type' => $userable_type
         ]);
     }
 }

@@ -1,10 +1,10 @@
 <?php $__env->startSection('content'); ?>
     <div class="row">
-        <div class="col-md-6 col-sm-6">
-            <img src="/storage/cover_image/<?php echo e($user->cover_image); ?>" alt="">
+        <div class="col-md-2 col-sm-2">
+            <img src="/storage/cover_image/<?php echo e($user->cover_image); ?>" alt="" width="200" height="200">
         </div>
-        <div class="col-md-6 col-sm-6">
-            <h1><?php echo e(Auth::user()->name); ?></h1>
+        <div class="col-md-2 col-sm-2 ml-3">
+            <h1><?php echo e($user->name ?? '---'); ?></h1>
         </div>
     </div>
     

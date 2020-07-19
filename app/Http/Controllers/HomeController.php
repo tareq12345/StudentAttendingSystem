@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Post;
+use App\Course;
+use App\Professor;
+use App\Student;
+use App\Admin;
 
 class HomeController extends Controller
 {
@@ -25,8 +29,19 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $courses = Course::all();
+        $professors = Professor::all();
+        $students = Student::all();
+        $admins = Admin::all();
+        if (auth()->user()->role_id == 2) {
+            return view('home');
+        }
+        elseif(auth()->user()->role_id == 1){
+            return view('admin.dashboard')->with('courses',$courses)->with('professors',$professors)->with('admins',$admins)->with('students',$students);
+        }
+        return "test";
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
-        return view('home');
+        
     }
 }

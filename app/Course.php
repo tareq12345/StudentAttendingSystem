@@ -11,8 +11,20 @@ class Course extends Model
     return $this->belongsToMany('App\Student')->withTimestamps();
   }
 
-  public function teachers()
+  public function professors()
   {
-    return $this->belongsToMany('App\Teacher')->withTimestamps();
+    return $this->belongsToMany('App\Professor')->withTimestamps();
   }
+
+  public function lectures(){
+    return $this->hasMany('App\Lecture');
+  }
+
+  public function department(){
+    return $this->belongsTo('App\Department');
+  }
+
+  public function level(){
+    return $this->belongsTo('App\Level');
+}
 }
