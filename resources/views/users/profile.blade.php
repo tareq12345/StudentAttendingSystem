@@ -1,12 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row">
-        <div class="col-md-2 col-sm-2">
-            <img src="/storage/cover_image/{{$user->cover_image}}" alt="" width="200" height="200">
-        </div>
-        <div class="col-md-4 col-sm-2 ml-3">
-            <h1>{{ $user->name ?? '---' }}</h1>
+    <div class="row mt-3">
+        <div class="col-md-6 text-left">
+            <img src="/storage/cover_image/{{$user->cover_image}}" class="rounded" width="100" height="100" alt="Admin-pic" draggable="false">
+            <span class="ml-2">Hello, {{ Auth::user()->name }}</span>
         </div>
     </div>
     

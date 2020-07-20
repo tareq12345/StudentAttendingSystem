@@ -32,6 +32,7 @@
                                 {{-- <th scope="col">Phone</th> --}}
                                 <th scope="col">Course name</th>
                                 <th scope="col">Pic</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -49,6 +50,12 @@
                                             <img src="/storage/cover_image/{{$student->user->cover_image}}" alt="" wisth="20" height="20">
                                         </div>
                                     </td>
+                                   <td>
+                                   {!!Form::open(['action' => ['AdminController@destroy', $student->id], 'method' => 'DELETE', 'class' => 'pull-right'])!!}
+                                        {{Form::hidden('_method', 'DELETE')}}
+                                        {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+                                   {!!Form::close()!!}
+                                   </td>
                                 </tr>
                         @endforeach
                         </tbody>

@@ -28,6 +28,19 @@ if (version_compare(PHP_VERSION, '7.2.0', '>=')) {
 
 
 
+// levels
+Route::resource('/levels', 'LevelsController');
+Route::post('/delete-levels', 'LevelsController@deleteLevels');
+ 
+
+// departments
+Route::resource('/departments', 'DepartmentsController');
+Route::post('/delete-departments', 'DepartmentsController@deleteDepartments');
+
+// create user
+Route::resource('/users', 'UsersController');
+Route::post('/delete-users', 'UsersController@deleteUsers');
+
 Route::get('/services','PagesController@services');
 
 Route::get('/', 'PagesController@index');

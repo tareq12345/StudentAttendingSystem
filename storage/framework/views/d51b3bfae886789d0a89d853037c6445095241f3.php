@@ -1,16 +1,14 @@
 <?php $__env->startSection('content'); ?>
-    <div class="row">
-        <div class="col-md-2 col-sm-2">
-            <img src="/storage/cover_image/<?php echo e($user->cover_image); ?>" alt="" width="200" height="200">
-        </div>
-        <div class="col-md-2 col-sm-2 ml-3">
-            <h1><?php echo e($user->name ?? '---'); ?></h1>
+    <div class="row mt-3">
+        <div class="col-md-6 text-left">
+            <img src="/storage/cover_image/<?php echo e($user->cover_image); ?>" class="rounded" width="100" height="100" alt="Admin-pic" draggable="false">
+            <span class="ml-2">Hello, <?php echo e(Auth::user()->name); ?></span>
         </div>
     </div>
     
     <hr/>
 
-    <?php echo Form::model($user, ['method' => 'POST', 'route' => ['User.update', $user->id], 'class' => 'form-horizontal', 'role' => 'form' , 'enctype' => "multipart/form-data"]); ?>
+    <?php echo Form::model($user, ['method' => 'POST', 'route' => ['User.update', Auth::user()->id], 'class' => 'form-horizontal', 'role' => 'form' , 'enctype' => "multipart/form-data"]); ?>
 
         <?php echo $__env->make('users._form', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
