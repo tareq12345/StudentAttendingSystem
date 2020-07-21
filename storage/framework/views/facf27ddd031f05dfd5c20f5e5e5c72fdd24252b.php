@@ -12,13 +12,7 @@
 
                         </div>
                     <?php endif; ?>
-                <?php if(is_array($courses) || is_object($courses)): ?>
-                    <?php $__currentLoopData = $courses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <?php if(count($item->students) > 0): ?>
-                            <h1>this shit works</h1>
-                        <?php endif; ?>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                <?php endif; ?>
+               
                 
                 <?php if(count($courses) > 0): ?>
                 <div class="students-table">
@@ -41,9 +35,7 @@
                                     
                                     <td><?php echo e($course->level->level_name ?? '---'); ?></td>
                                     <td><?php echo e($course->department->dept_name ?? '---'); ?></td>
-                                    
-                                    
-                                    
+
                                     <td><?php echo e($professor->courses[0]->course_name ?? '---'); ?></td>
                                     <td><?php echo e($professor->qualification ?? '---'); ?></td>
                                     <td>
@@ -54,18 +46,50 @@
                                     <td>
                                     <?php echo Form::open(['action' => ['AdminController@assignCourse', $course->id], 'method' => 'POST', 'class' => 'pull-right']); ?>
 
-                                        <?php echo Form::text('student_email', 'kareemhbendary86@gmail.com', ['class' => 'form-control']); ?>
+                                        <div>
+                                        <input id="student_email" type="email" class="form-control <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="student_email" value="<?php echo e(old('email')); ?>"  autocomplete="email" autofocus>
 
-                                        <span class="help-block text-danger">
-                                            <?php echo e($errors -> first('email')); ?>
+                                        <?php $__errorArgs = ['student_email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong><?php echo e($message); ?></strong>
+                                            </span>
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                        </div>
+                                        <input id="professor_email" type="email" class="form-control <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="professor_email" value="<?php echo e(old('email')); ?>"  autocomplete="email" autofocus>
 
-                                        </span>   
-                                        <?php echo Form::text('professor_email', 'kareemhbendary86@gmail.com', ['class' => 'form-control']); ?>
-
-                                        <span class="help-block text-danger">
-                                            <?php echo e($errors -> first('email')); ?>
-
-                                        </span>                                     
+                                        <?php $__errorArgs = ['professor_email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong><?php echo e($message); ?></strong>
+                                            </span>
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>                              
                                         <?php echo e(Form::submit('Assign', ['class' => 'btn btn-primary'])); ?>
 
                                     <?php echo Form::close(); ?>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Student;
+use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
@@ -48,7 +50,25 @@ class StudentController extends Controller
             'gender' => 'required',
             'adress' => 'required',
         ]);
+
+        // save image file 
+        if($request->hasFile('cover_image')){
+            // Get file name with extenstion
+            $fileNameWithExt = $request->file('cover_image')->getClientOriginalName();
+            // get just filename
+            $filename = pathinfo($fileNameWithExt,PATHINFO_FILENAME);
+            // get just ext
+            $extension = $request->file('cover_image')->getClientOriginalExtension();
+            // Filename to store
+            $fileImageToStore = $filename.'_'.time().'.'.$extension;
+            // upload image
+            $path = $request->file('cover_image')->storeAs('public/cover_image',$fileImageToStore);
+        }
+        else {
+            $fileImageToStore = 'default.png';
+        }
             
+        
         // Create student
         $student = new Student;
         $student->date_of_birth = $request->input('date_of_birth');
@@ -56,7 +76,7 @@ class StudentController extends Controller
         $student->level_id = '1';
         $student->department_id = '1';
         $student->save();
-        return $student->adress;
+        // return $student->adress;
         $role_id = 3;
         $userable_type = 'App\Student' ;
         User::create([

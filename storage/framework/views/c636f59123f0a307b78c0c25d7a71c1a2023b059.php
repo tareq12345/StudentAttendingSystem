@@ -24,10 +24,10 @@
      </div>
 
      
-
+      <div>
       <?php echo e(Form::Submit('Submit',['class' => 'btn btn-primary'])); ?>
 
-    
+      </div>
    <?php echo Form::close(); ?>
 
 <?php $__env->stopSection(); ?>

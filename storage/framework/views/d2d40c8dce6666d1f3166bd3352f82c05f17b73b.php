@@ -31,6 +31,7 @@
                                 
                                 <th scope="col">Course name</th>
                                 <th scope="col">Pic</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -48,6 +49,16 @@
                                             <img src="/storage/cover_image/<?php echo e($student->user->cover_image); ?>" alt="" wisth="20" height="20">
                                         </div>
                                     </td>
+                                   <td>
+                                   <?php echo Form::open(['action' => ['AdminController@destroy', $student->id], 'method' => 'DELETE', 'class' => 'pull-right']); ?>
+
+                                        <?php echo e(Form::hidden('_method', 'DELETE')); ?>
+
+                                        <?php echo e(Form::submit('Delete', ['class' => 'btn btn-danger'])); ?>
+
+                                   <?php echo Form::close(); ?>
+
+                                   </td>
                                 </tr>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>

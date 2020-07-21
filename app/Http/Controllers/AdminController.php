@@ -175,9 +175,29 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($courseId)
+    public function destroy($id)
     {
-        //
+        $user = Student::find($id);
+         $user->courses()->detach();
+        return User::where('userable_id','=', $id,'and')->where('userable_type','=', 'App\Student')->get();
+        
+        //Check if post exists before deleting
+        if (!isset($user)){
+            return redirect('/admin')->with('error', 'No User Found');
+        }
+
+        // Check for correct user
+        // if(auth()->user()->id !==$post->user_id){
+        //     return redirect('/posts')->with('error', 'Unauthorized Page');
+        // }
+
+        // if($post->cover_image != 'noimage.jpg'){
+        //     // Delete Image
+        //     Storage::delete('public/cover_images/'.$post->cover_image);
+        // }
+        
+        $user->delete();
+        return redirect('/admin')->with('success', 'User Removed');
     }
 
     public function assignCourse(Request $request,$course_id){

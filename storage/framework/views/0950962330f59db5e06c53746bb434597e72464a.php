@@ -6,9 +6,9 @@
                 <div class="card-header"><?php echo e(__('Create Student')); ?></div>
 
                 <div class="card-body">
-                    <form action='UserController@store' method="POST" enctype="multipart/form-data">
-                        <?php echo e(method_field('POST')); ?>
-
+                    <form action='/student' method="POST" enctype="multipart/form-data">
+                        <?php echo csrf_field(); ?>
+                        
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right"><?php echo e(__('Name')); ?></label>
@@ -70,38 +70,43 @@ unset($__errorArgs, $__bag); ?>" name="password" required autocomplete="new-pass
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right" for="cover_image">Select a file:</label>
+                            <label class="col-md-4 col-form-label text-md-right" for="cover_image">Select Image:</label>
                             <div class="col-md-6">
                             <input type="file" id="cover_image" name="cover_image">
                             </div>                           
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right" for="gender">male:</label>
+                            <label class="col-md-4 col-form-label text-md-right" for="gender">Male:</label>
                             <div class="col-md-6">
                             <input type="radio" id="gender" name="gender" value="male">
                             </div>                           
                         </div>
                         
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right" for="gender">female:</label>
+                            <label class="col-md-4 col-form-label text-md-right" for="gender">Female:</label>
                             <div class="col-md-6">
-                            <input type="radio" id="gender" name="gender" value="female">
+                                <input type="radio" id="gender" name="gender" value="female">
                             </div>                           
                         </div>
 
-                        <div class="form-group row col-sm-6">
-                            <label class="" for="date_of_birth">Select a date:</label>
-                            <input type="date" id="date_of_birth" name="date_of_birth">                           
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right" for="date_of_birth">Select Date:</label>
+                            
+                            <div class="col-md-6">
+                                <input type="date" id="date_of_birth" name="date_of_birth"> 
+                            </div>                            
                         </div>
 
-                        <div class="form-group">
-                            <?php echo e(Form::label('adress','adress')); ?>
-
-                            <?php echo e(Form::textarea('adress','',[ 'class' => 'form-control' , 'placeholder' => 'adress'])); ?>
-
+                        <div class="form-group row">
+                            <!-- <?php echo e(Form::label('adress','Address')); ?> -->
+                            <label  class="col-md-4 col-form-label text-md-right" for="adress">Address</label>
+                            <div class="col-md-6">
+                                <!-- <?php echo e(Form::textarea('adress','',[ 'placeholder' => 'adress'])); ?> -->
+                                <textarea class="form-control" id="adress" rows="3" name="adress"></textarea>
+                            </div>    
                          </div>
-
+                         <!-- <?php echo e(Form::hidden('_method','POST')); ?> -->
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
