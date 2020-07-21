@@ -41,6 +41,10 @@ Route::post('/delete-departments', 'DepartmentsController@deleteDepartments');
 Route::resource('/users', 'UsersController');
 Route::post('/delete-users', 'UsersController@deleteUsers');
 
+ // courses
+ Route::resource('/course', 'CoursesController');
+ Route::post('/delete-courses', 'CoursesController@deleteCourses');
+
 Route::get('/services','PagesController@services');
 
 Route::get('/', 'PagesController@index');
