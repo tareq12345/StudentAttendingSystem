@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Professor;
+use App\Admin;
 
 class RegisterController extends Controller
 {
@@ -84,7 +85,7 @@ class RegisterController extends Controller
             $path = $request->file('cover_image')->storeAs('public/cover_image',$fileImageToStore);
         }
         else {
-            $fileImageToStore = 'noimage.jpg';
+            $fileImageToStore = 'default.png';
         }
         
         $professor = new Professor;
@@ -97,7 +98,6 @@ class RegisterController extends Controller
         if($request->get('role_id') == ''){
             $role_id = 2;
         }
-
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

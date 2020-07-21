@@ -27,8 +27,8 @@
         <label class="" for="course_date">Select a date:</label>
         <input type="date" id="course_date" name="course_date">                           
     </div> --}}
-
+      <div>
       {{Form::Submit('Submit',['class' => 'btn btn-primary'])}}
-    
+      </div>
    {!! Form::close() !!}
 @endsection

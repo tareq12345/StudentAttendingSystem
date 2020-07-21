@@ -18,7 +18,7 @@ class CreateCoursesTable extends Migration
             $table->timestamps();
             $table->integer('level_id');
             $table->string('course_name');
-            $table->integer('dept_id');
+            $table->integer('department_id');
         });
     }
 

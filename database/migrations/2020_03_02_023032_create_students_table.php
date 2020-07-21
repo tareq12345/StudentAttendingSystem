@@ -19,8 +19,8 @@ class CreateStudentsTable extends Migration
             $table->date('date_of_birth');
             $table->string('adress');
             $table->integer('level_id');
-            $table->integer('dept_id');
-            $table->integer('role_id');
+            $table->integer('department_id');
+            // $table->integer('role_id');
         });
     }
 

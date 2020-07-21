@@ -19,7 +19,7 @@ class CreateAttendancesTable extends Migration
             $table->string('status');
             $table->integer('student_id');
             $table->integer('level_id');
-            $table->integer('dept_id');
+            $table->integer('department_id');
             $table->integer('qr_code_id');
             $table->timestamp('date');
         });

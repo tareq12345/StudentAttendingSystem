@@ -39,7 +39,6 @@ class HomeController extends Controller
         elseif(auth()->user()->role_id == 1){
             return view('admin.dashboard')->with('courses',$courses)->with('professors',$professors)->with('admins',$admins)->with('students',$students);
         }
-        return "test";
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
         

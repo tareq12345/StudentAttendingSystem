@@ -18,8 +18,8 @@ class UserController extends Controller
     public function index()
     {
         $title = "Wlecome to Student Attending System Project.";
-        // return view('pages.index',compact('title'));
         return view('professor.professor')->with('title',$title);
+        
     }
 
     /**
@@ -33,7 +33,7 @@ class UserController extends Controller
         if (auth()->user()->role_id != 1) {
             return response()->view('errors.403');
         }
-        $user = Professor::all();
+        
         // return view('professor.courses')->with('courses',$userable['courses']);
             return view('admin.create_students');
     }

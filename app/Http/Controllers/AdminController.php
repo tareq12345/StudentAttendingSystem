@@ -79,17 +79,6 @@ class AdminController extends Controller
 
     }
 
-    // public function createStudent()
-    // {
-    //     if (auth()->user()->role_id != 1) {
-    //         return response()->view('errors.403');
-    //     }
-    //     $user = Professor::all();
-    //     // return view('professor.courses')->with('courses',$userable['courses']);
-    //         return view('admin.create_students');
-
-    // }
-
 
     public function createProfessor()
     {
@@ -138,48 +127,13 @@ class AdminController extends Controller
         // return $request->input('course_dat');
     }
 
-    //  /**
-    //  * Store a newly created resource in storage.
-    //  *
-    //  * @param  \Illuminate\Http\Request  $request
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function storeStudent(Request $request)
-    // {
-    //     $this->validate($request, [
-    //         'name' => ['required', 'string', 'max:255'],
-    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-    //         'password' => ['required', 'string', 'min:8', 'confirmed'],
-    //         'cover_image' => 'image|nullable|max:1999',
-    //         'gender' => 'required',
-    //         'adress' => 'required',
-    //     ]);
-
-    //     // Create student
-    //     $student = new Student;
-    //     $student->date_of_birth = $request->input('date_of_birth');
-    //     $student->adress = $request->input('adress');;
-    //     $student->level_id = '1';
-    //     $student->department_id = '1';
-    //     $student->save();
-        
-    //     $role_id = 3;
-    //     $userable_type = 'App\Student' ;
-    //     User::create([
-    //         'name' => $request['name'],
-    //         'email' => $request['email'],
-    //         'password' => Hash::make($data['password']),
-    //         'cover_image' => $fileImageToStore,
-    //         'gender' => $request->get('gender'),
-    //         'role_id' => $role_id,
-    //         'userable_id' => $student->id,
-    //         'userable_type' => $userable_type
-    //     ]);
-
-       
-    //     return redirect('/home')->with('success','Student Created');
-    //     // return $request->input('course_dat');
-    // }
+     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    
 
     /**
      * Display the specified resource.
@@ -221,8 +175,72 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($courseId)
     {
         //
+    }
+
+    public function assignCourse(Request $request,$course_id){
+        $this->validate($request, [
+            'student_email' => 'nullable|string|email|max:255|',
+            'professor_email' => ['nullable', 'string', 'email', 'max:255', ],
+        ]);
+        if ($request->get('student_email') == $request->get('professor_email')){
+            $course = Course::all();
+            return redirect('/courses')->with('courses',$course)->with('error','Usae diffrent email for professor');
+        }
+        if($request->get('student_email') == '' && $request->get('professor_email') == ''){
+            $course = Course::all();
+            return redirect('/courses')->with('courses',$course)->with('error','Enter correct email');
+        }
+
+        elseif($request->get('student_email') != '' && $request->get('professor_email') == ''){
+            // assign course to student.
+            
+            $user = User::where('email', '=', $request->get('student_email'))->first();
+            if(!$user || $user->role_id != 3) {
+                // handle the case if no user is found
+                return redirect('/courses')->with('courses',$course)->with('error','Student not found');
+              }
+            $userable = $user['userable'];
+            $userable->courses()->attach($course_id);  
+            $course = Course::all();
+            return redirect('/courses')->with('courses',$course)->with('success','Course Assigned');
+        }
+        elseif($request->get('professor_email') != '' && $request->get('student_email') == ''){
+            // assign course to professor
+            $user = User::where('email', '=', $request->get('professor_email'))->first();
+            if(!$user || $user->role_id != 2) {
+                // handle the case if no user is found
+                return redirect('/courses')->with('courses',$course)->with('error','Professot not found');
+              }
+            $userable = $user['userable'];
+            $userable->courses()->attach($course_id); 
+            $course = Course::all();
+            return redirect('/courses')->with('courses',$course)->with('success','Course Assigned'); 
+        }
+        else{
+            // assign course to student and professor
+            
+            $student = User::where('email', '=', $request->get('student_email'))->first();
+            $professor = User::where('email', '=', $request->get('professor_email'))->first();
+
+            if(!$student || $student->role_id != 3) {
+                // handle the case if no user is found
+                return redirect('/courses')->with('courses',$course)->with('error','Student not found');
+              }
+            if(!$professor || $professor->role_id != 2) {
+                // handle the case if no user is found
+                return redirect('/courses')->with('courses',$course)->with('error','Peofessor not found');
+              }
+            $userable = $student['userable'];
+            $userable->courses()->attach($course_id);  
+
+            $userable = $professor['userable'];
+            $userable->courses()->attach($course_id);  
+
+            $course = Course::all();
+            return view('admin.courses')->with('courses',$course)->with('success','Course Assigned');
+        }
     }
 }

@@ -13,13 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                @if(is_array($courses) || is_object($courses))
-                    @foreach ($courses as $item)
-                        @if(count($item->students) > 0)
-                            <h1>this shit works</h1>
-                        @endif
-                    @endforeach
-                @endif
+               
                 
                 @if(count($courses) > 0)
                 <div class="students-table">
@@ -42,15 +36,33 @@
                                     {{-- <td> <a href="/User/{{$professor->user->id}}/edit">{{$course->course_name ?? '---'}}</a></td> --}}
                                     <td>{{$course->level->level_name ?? '---'}}</td>
                                     <td>{{$course->department->dept_name ?? '---'}}</td>
-                                    {{-- <td>{{data_get($course, 'students.user.email', '---') }}</td> --}}
-                                    {{-- <td>{{$item->user->phone ?? '---'}}</td> --}}
-                                    {{-- <td>{{$item->pivot->course_id}}</td> --}}
                                     <td>{{$professor->courses[0]->course_name ?? '---'}}</td>
                                     <td>{{$professor->qualification ?? '---'}}</td>
                                     <td>
                                         <div class="col-md-6 col-sm-6">
                                             <img src="/storage/cover_image/{{$professor->user->cover_image}}" alt="" wisth="20" height="20">
                                         </div>
+                                    </td>
+                                    <td>
+                                    {!!Form::open(['action' => ['AdminController@assignCourse', $course->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
+                                        <div>
+                                        <input id="student_email" type="email" class="form-control @error('email') is-invalid @enderror" name="student_email" value="{{ old('email') }}"  autocomplete="email" autofocus>
+
+                                        @error('student_email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                        </div>
+                                        <input id="professor_email" type="email" class="form-control @error('email') is-invalid @enderror" name="professor_email" value="{{ old('email') }}"  autocomplete="email" autofocus>
+
+                                        @error('professor_email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror                              
+                                        {{Form::submit('Assign', ['class' => 'btn btn-primary'])}}
+                                    {!!Form::close()!!}
                                     </td>
                                 </tr>
                         @endforeach

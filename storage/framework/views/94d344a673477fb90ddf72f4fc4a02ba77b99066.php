@@ -13,12 +13,13 @@
                         <div class="list-group">
                             <a href="/admin" class="list-group-item list-group-item-action text-uppercase">Manage Students</a>
                             <a href="/professors" class="list-group-item list-group-item-action text-uppercase">Manage Professors</a>
-                            <a href="<?php echo e(route('courses.show')); ?>" class="list-group-item list-group-item-action text-uppercase">Manage Courses</a>
+                            <a href="/courses" class="list-group-item list-group-item-action text-uppercase">Manage Courses</a>
                             <a href="<?php echo e(route('User.edit', \Auth::user()->id)); ?>" class="list-group-item list-group-item-action text-uppercase">Edit profile</a>
                             <a href="/admin/create" class="list-group-item list-group-item-action text-uppercase">Manage Attendance</a>
                             <a href="/admins" class="list-group-item list-group-item-action text-uppercase">Manage Admins</a>
                             <a href="/User/create" class="list-group-item list-group-item-action text-uppercase">Manage Departments</a>
                             <a href="#" class="list-group-item list-group-item-action text-uppercase">Manage Levels</a>
+                            <a href="qr-code-g" class="list-group-item list-group-item-action text-uppercase">Manage Qr Code</a>
                         </div>
                     </div>
                 </div>

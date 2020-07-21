@@ -10,16 +10,16 @@
             <div class="home-content text-center">
                 <div class="row">
                     <div class="col-md-3 col-sm-6">
-                        <a href="/update-profile.html">Manage profile</a>
+                        <a href="/update-profile.html">Update profile</a>
                     </div>
                     <div class="col-md-3 col-sm-6">
-                        <a href="/view-attendance.html">Manage Attendance</a>
+                        <a href="/view-attendance.html">View Attendance</a>
                     </div>
                     <div class="col-md-3 col-sm-6">
-                        <a href="/courses.html">Manage Courses</a>
+                        <a href="/courses.html">Courses</a>
                     </div>
                     <div class="col-md-3 col-sm-6">
-                        <a href="/qr-code.html">Manage QR code</a>
+                        <a href="qr-code.html">QR code</a>
                     </div>
                 </div>
             </div>

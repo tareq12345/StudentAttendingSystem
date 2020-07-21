@@ -28,7 +28,7 @@
                                 <td>{{$course->course_name}}</td>
                                 <td>{{$course->level->level_name}}</td>
                                 <td>{{$course->department->dept_name ?? '---'}}</td>
-                                <td><a href="QR-Scanner-Generator-master/index.php" class="">Generate QR Code</a></td>
+                                <td><a href="qr-code-g/{{$course->course_name}}" class="">Generate QR Code</a></td>
                                 {{-- <td>{{$post->status->type}}</td> --}}
                                 <td>{{$course->lectures[0]->lec_time ?? '---'}}</td>
                             </tr>
