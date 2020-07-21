@@ -90,10 +90,5 @@
 <div class="form-group row col-sm-6">
     <label class="" for="gender">female:</label>
     <input type="radio" id="gender" name="gender" value="female">                           
-<<<<<<< HEAD
-</div>
-<?php /**PATH C:\laragon\www\gapp\resources\views/users/_form.blade.php ENDPATH**/ ?>
-=======
 </div> -->
 <?php /**PATH C:\laragon\www\gapp\resources\views/users/_form.blade.php ENDPATH**/ ?>
->>>>>>> 8e46da84b7be869c6033a634795f7fa00edcad72
