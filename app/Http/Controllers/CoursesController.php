@@ -113,11 +113,18 @@ class CoursesController extends Controller
 
     public function deleteCourses(Request $request)
     {
-        $delid = $request->input('delid');
+        $delid = [$request->input('delid')];
         Course::whereIn('id', $delid)->delete();
 
         session()->flash('danger', 'Selected courses were deleted');
 
         return redirect(route('course.index'));
     }
+
+    public function attendance($course_name)
+    {
+        // if course name equal the course name in the database
+        // put the student attendance with student id and level and all the pther shit
+    }
+
 }

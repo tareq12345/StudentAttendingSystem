@@ -435,17 +435,28 @@ unset($__errorArgs, $__bag); ?>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </td>
                                     <td>
-                                        <form>
+                                        <form action="<?php echo e(route('assignCourse', $course->id)); ?>" method="POST">
                                             <div class="form-group">
-                                                <input type="email" class="form-control" placeholder="Enter student email">
+                                                <input value="<?php echo e(old('email')); ?>" name="student_email" type="email" class="form-control" placeholder="Enter student email">
                                             </div>
+                                            <?php echo e(Form::submit('Assign', ['class' => 'btn btn-primary'])); ?>
+
                                         </form>
                                     </td>
                                     <td>
-                                        <form>
+                                        <form action="<?php echo e(route('assignCourse', $course->id)); ?>" method="POST">
                                             <div class="form-group">
-                                                <input type="email" class="form-control" placeholder="Enter professor email">
+                                                <input id="professor_email" type="email" class="form-control <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="professor_email" value="<?php echo e(old('email')); ?>" class="form-control" placeholder="Enter professor email">
                                             </div>
+                                            <?php echo e(Form::submit('Assign', ['class' => 'btn btn-primary'])); ?>
+
                                         </form>
                                     </td>
                                 </tr>
@@ -456,7 +467,7 @@ unset($__errorArgs, $__bag); ?>
             </div>
         </form>
     </div>
-</div>
+</div> 
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\gapp\resources\views/admin/courses/index.blade.php ENDPATH**/ ?>

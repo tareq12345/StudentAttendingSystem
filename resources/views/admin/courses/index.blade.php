@@ -293,17 +293,19 @@
                                         @endforeach
                                     </td>
                                     <td>
-                                        <form>
+                                        <form action="{{ route('assignCourse', $course->id) }}" method="POST">
                                             <div class="form-group">
-                                                <input type="email" class="form-control" placeholder="Enter student email">
+                                                <input value="{{ old('email') }}" name="student_email" type="email" class="form-control" placeholder="Enter student email">
                                             </div>
+                                            {{Form::submit('Assign', ['class' => 'btn btn-primary'])}}
                                         </form>
                                     </td>
                                     <td>
-                                        <form>
+                                        <form action="{{ route('assignCourse', $course->id) }}" method="POST">
                                             <div class="form-group">
-                                                <input type="email" class="form-control" placeholder="Enter professor email">
+                                                <input id="professor_email" type="email" class="form-control @error('email') is-invalid @enderror" name="professor_email" value="{{ old('email') }}" class="form-control" placeholder="Enter professor email">
                                             </div>
+                                            {{Form::submit('Assign', ['class' => 'btn btn-primary'])}}
                                         </form>
                                     </td>
                                 </tr>
@@ -314,5 +316,5 @@
             </div>
         </form>
     </div>
-</div>
+</div> 
 @endsection

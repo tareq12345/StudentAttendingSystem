@@ -77,4 +77,4 @@ Route::get('/create/student','AdminController@createStudent');
 
 Route::get('doctor/qr-code-g/{course_name}','QrCodeController@qrGenerator');
 
-Route::post('/assign/course/{courseId}','AdminController@assignCourse');
+Route::post('/assign/course/{courseId}','AdminController@assignCourse')->name("assignCourse");

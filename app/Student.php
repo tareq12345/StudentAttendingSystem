@@ -14,4 +14,7 @@ class Student extends Model
     public function user() {
       return $this->morphOne('App\User', 'userable');
   }
+  public function attendance(){
+    return $this->hasMany('App\Attendance');
+  }
 }
