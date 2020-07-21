@@ -165,7 +165,6 @@ return [
         /*
          * Package Service Providers...
          */
-        Intervention\Image\ImageServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
         /*
