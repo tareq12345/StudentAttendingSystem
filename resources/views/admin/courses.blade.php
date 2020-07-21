@@ -36,7 +36,6 @@
                                     {{-- <td> <a href="/User/{{$professor->user->id}}/edit">{{$course->course_name ?? '---'}}</a></td> --}}
                                     <td>{{$course->level->level_name ?? '---'}}</td>
                                     <td>{{$course->department->dept_name ?? '---'}}</td>
-
                                     <td>{{$professor->courses[0]->course_name ?? '---'}}</td>
                                     <td>{{$professor->qualification ?? '---'}}</td>
                                     <td>

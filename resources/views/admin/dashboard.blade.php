@@ -23,7 +23,7 @@
                             <a href="/professors" class="list-group-item list-group-item-action text-uppercase">Manage Professors</a>
                             <a href="/courses" class="list-group-item list-group-item-action text-uppercase">Assign Courses</a>
                             <a href="{{ route('User.edit', \Auth::user()->id) }}" class="list-group-item list-group-item-action text-uppercase">Edit profile</a>
-                            <a href="/admin/create" class="list-group-item list-group-item-action text-uppercase">Create Course</a>
+                            <a href="/course" class="list-group-item list-group-item-action text-uppercase">Create Course</a>
                             <a href="/admins" class="list-group-item list-group-item-action text-uppercase">Manage Admins</a>
                             <a href="/student/create" class="list-group-item list-group-item-action text-uppercase">Create Students</a>
                             <a href="{{ route('departments.index') }}" class="list-group-item list-group-item-action text-uppercase">Departments</a>

@@ -18,7 +18,6 @@ class UserController extends Controller
     public function index()
     {
         $title = "Wlecome to Student Attending System Project.";
-        // return view('pages.index',compact('title'));   
         return view('professor.professor')->with('title',$title);
         
     }

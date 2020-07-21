@@ -41,6 +41,10 @@ Route::post('/delete-departments', 'DepartmentsController@deleteDepartments');
 Route::resource('/users', 'UsersController');
 Route::post('/delete-users', 'UsersController@deleteUsers');
 
+ // courses
+ Route::resource('/course', 'CoursesController');
+ Route::post('/delete-courses', 'CoursesController@deleteCourses');
+
 Route::get('/services','PagesController@services');
 
 Route::get('/', 'PagesController@index');
@@ -73,4 +77,4 @@ Route::get('/create/student','AdminController@createStudent');
 
 Route::get('doctor/qr-code-g/{course_name}','QrCodeController@qrGenerator');
 
-Route::post('/assign/course/{courseId}','AdminController@assignCourse');
+Route::post('/assign/course/{courseId}','AdminController@assignCourse')->name("assignCourse");

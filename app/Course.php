@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
+  protected $fillable = [ 'course_name', 'level_id', 'department_id'];
     public function students()
   {
     return $this->belongsToMany('App\Student')->withTimestamps();
