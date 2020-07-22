@@ -23,8 +23,8 @@ Route::post('register', 'API\UserController@register');
 Route::group(['middleware' => 'auth:api'], function(){
 Route::post('details', 'API\UserController@details');
 });
-Route::get('users/{id}', 'API\UserController@show' );
+Route::post('users/{id}', 'API\UserController@show' );
 
-Route::put('users/{id}', 'API\UserController@update');
+Route::post('users/edit/{id}', 'API\UserController@update');
 
-Route::post('auth/forgot', 'AuthController@forgot');
+Route::post('ChangePssword/{id}', 'API\UserController@changePassword');
