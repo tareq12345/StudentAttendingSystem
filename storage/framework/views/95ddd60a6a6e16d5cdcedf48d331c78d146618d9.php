@@ -45,7 +45,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?> form-control"
-                                type="number"
+                                type="text"
                                 id="level"
                                 name="level"
                                 placeholder="Add a new Level"

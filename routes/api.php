@@ -23,3 +23,8 @@ Route::post('register', 'API\UserController@register');
 Route::group(['middleware' => 'auth:api'], function(){
 Route::post('details', 'API\UserController@details');
 });
+Route::get('users/{id}', 'API\UserController@show' );
+
+Route::put('users/{id}', 'API\UserController@update');
+
+Route::post('auth/forgot', 'AuthController@forgot');
