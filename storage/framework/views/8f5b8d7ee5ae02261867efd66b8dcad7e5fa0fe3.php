@@ -11,7 +11,7 @@
                 <?php echo method_field('PUT'); ?>
             <?php endif; ?>
             <div class="form-group">
-                <label for="level">Level Name:</label>
+                <label for="level">Level Nme:</label>
                 <input
                     class="<?php $__errorArgs = ['level'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -21,7 +21,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?> form-control"
-                    type="number"
+                    type="text"
                     id="level"
                     name="level"
                     placeholder="Add a new Level"

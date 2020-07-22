@@ -15,7 +15,7 @@
                 <label for="level">Level Name:</label>
                 <input
                     class="@error('level') is invalid @enderror form-control"
-                    type="number"
+                    type="text"
                     id="level"
                     name="level"
                     placeholder="Add a new Level"
