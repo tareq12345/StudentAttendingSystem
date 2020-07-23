@@ -7,7 +7,7 @@
             <span class="ml-2">Hello, {{ Auth::user()->name }}</span>
         </div>
     </div>
-    
+
     <hr/>
 
     {!! Form::model($user, ['method' => 'POST', 'route' => ['User.update', Auth::user()->id], 'class' => 'form-horizontal', 'role' => 'form' , 'enctype' => "multipart/form-data"]) !!}

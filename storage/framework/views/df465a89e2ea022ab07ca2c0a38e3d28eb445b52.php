@@ -1,52 +1,53 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
-    <title>{{ config('app.name', 'QR Code') }}</title>
+    <title><?php echo e(config('app.name', 'QR Code')); ?></title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="<?php echo e(asset('js/app.js')); ?>" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('css/main.css')); ?>" rel="stylesheet">
 </head>
 <body>
     <div id="app">
         <main>
-            @include('inc.navbar')
-            @auth
+            <?php echo $__env->make('inc.navbar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+            <?php if(auth()->guard()->check()): ?>
                 <div class="container">
                     <div class="row mt-4">
                         <div class="col-md-3">
                             <div class="professor-list">
                                 <div class="list-group">
-                                    <a class="list-group-item list-group-item-action text-uppercase" href="{{ route('User.edit', \Auth::user()->id) }}">Manage Profile</a>
+                                    <a class="list-group-item list-group-item-action text-uppercase" href="<?php echo e(route('User.edit', \Auth::user()->id)); ?>">Manage Profile</a>
                                     <a class="list-group-item list-group-item-action text-uppercase" href="/doctor">Manage Student</a>
                                     <a class="list-group-item list-group-item-action text-uppercase" href="/doctor/create">Manage Courses</a>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-9">
-                            @yield('content')
+                            <?php echo $__env->yieldContent('content'); ?>
                         </div>
                     <div>
                 </div>
-            @else
+            <?php else: ?>
                 <div class="col-md-12">
-                    @yield('content')
+                    <?php echo $__env->yieldContent('content'); ?>
                 </div>
-            @endauth
+            <?php endif; ?>
         </main>
     </div>
 </body>
 </html>
+<?php /**PATH E:\GP\GP_K\StudentAttendingSystem\resources\views/layouts/app.blade.php ENDPATH**/ ?>

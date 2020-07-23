@@ -1,5 +1,5 @@
 /* Professor's Home */
-.professor-home, 
+.professor-home,
 .update-profile,
 .view-attendance,
 .courses,
@@ -53,22 +53,23 @@
 }
 
 /* kharem CSS */
-.admin-content {
+.admin-content, .pro-content {
   margin-top: 20px;
 }
 
-.admin-list a {
+.admin-list a, .professor-list a {
   margin-bottom: 6px !important;
 }
 
-.admin-list .list-group-item {
+.admin-list .list-group-item, .professor-list .list-group-item {
   background: #fff;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, .18) !important;
   border-radius: 2px !important;
   border: none;
 }
 
-.admin-list .list-group-item-action {
+.admin-list .list-group-item-action,
+.professor-list .list-group-item-action {
   color: #2176bd;
 }
 
