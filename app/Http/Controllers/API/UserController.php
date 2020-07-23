@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Support\Facades\Hash;
 // use App\Student; 
 use Illuminate\Support\Facades\Auth; 
+use Response;
 use Validator;
 class UserController extends Controller 
 {
@@ -25,12 +26,12 @@ public $successStatus = 200;
             }
                 
             
-            return response()->json([$success], $this-> successStatus); 
+            return Response::json($success, 200);
         } 
         else{ 
             $success['message'] = false;
             $success['data'] = ['scalar'=>'البريد الالكتروني او كلمة السر غير صحيحة'];
-            return response()->json([$success], $this-> successStatus);
+            return Response::json($success, 200);
         } 
     }
 
@@ -40,45 +41,49 @@ public $successStatus = 200;
         return response()->json([$user], $this-> successStatus); 
     } 
 
-    public function show($id)
+    public function show(Request $request)
     {
         // return User::find($id);
+        $id = $request->input("userid");
         $user = User::Find($id); 
         if ($user){
-        return response()->json([$user], $this->successStatus);
+            $success['message'] = true;
+            $success['data'] = $user;
+            $userable = $user['userable'];
+            $success['data']['date_of_birth'] = $user['userable']->date_of_birth;
+            return Response::json($success, 200);
         }
         else{
             $success['message'] = false;
             $success['data'] = ['scalar'=>'المستخدم غير موجود'];
-            return response()->json([$success], $this-> successStatus);
+            return Response::json($success, 200);
         } 
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         
-        $user = User::find($id);
+        $user = User::find($request->get("userid"));
         if($user){
             $user->name = $request->name;
             $user->email = $request->email;
-            $user->cover_image = $request->cover_image;
             $userable = $user['userable'];
             $userable->date_of_birth = $request->get('date_of_birth');
             $userable->save();
             $user->save();
             $success['message'] = true;
             $success['data'] = $user;
-            return response()->json([$success], $this->successStatus); 
+            return Response::json($success, 200);
         }
         else{
             $success['message'] = false;
             $success['data'] = ['scalar'=>'المستخدم غير موجود'];
-            return response()->json([$success], $this-> successStatus);
+            return Response::json($success, 200);
         }
     }
 
-    public function changePassword(Request $request, $id){
-        $user = User::find($id);
+    public function changePassword(Request $request){
+        $user = User::find($request->get("userid"));
         if($user){
             // $success["data"] = $user;
             // return response()->json([$success], $this->successStatus); 
@@ -87,18 +92,18 @@ public $successStatus = 200;
                 $user->save();
                 $success['message'] = true;
                 $success['data'] = ['scalar'=>'تم تغير كلمة السر'];
-                return response()->json([$success], $this->successStatus); 
+                return Response::json($success, 200);
             }
             else{
                 $success['message'] = false;
                 $success['data'] = ['scalar'=>'كلمة السر غير صحيحة'];
-                return response()->json([$success], $this-> successStatus);
+                return Response::json($success, 200);
             }
         }
         else{
             $success['message'] = false;
             $success['data'] = ['scalar'=>'المستخدم غير موجود'];
-            return response()->json([$success], $this-> successStatus);
+            return Response::json($success, 200);
         }
     }
 }
