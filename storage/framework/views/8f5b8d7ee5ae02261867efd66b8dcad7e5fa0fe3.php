@@ -11,7 +11,7 @@
                 <?php echo method_field('PUT'); ?>
             <?php endif; ?>
             <div class="form-group">
-                <label for="level">Level Nme:</label>
+                <label for="level">Level Name:</label>
                 <input
                     class="<?php $__errorArgs = ['level'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
