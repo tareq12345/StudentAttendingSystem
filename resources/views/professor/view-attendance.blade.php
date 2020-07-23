@@ -31,7 +31,7 @@
                                 <th scope="col">Email</th>
                                 {{-- <th scope="col">Phone</th> --}}
                                 <th scope="col">Course name</th>
-                                <th scope="col">Pic</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -45,12 +45,7 @@
                                     {{-- <td>{{$item->user->phone ?? '---'}}</td> --}}
                                     {{-- <td>{{$item->pivot->course_id}}</td> --}}
                                     <td>{{$course->course_name ?? '---'}}</td>
-                                    <td>
-                                        {{-- <div class="col-md-6 col-sm-6">
-                                        <img src="/storage/cover_image/{{$item->user->cover_image}}" alt="">
-                                        </div> --}}
-                                        pic here
-                                    </td>
+                                    
                                 </tr>
                             @endforeach
                         @endforeach

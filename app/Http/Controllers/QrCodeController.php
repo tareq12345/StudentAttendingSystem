@@ -15,6 +15,6 @@ class QrCodeController extends Controller
               ->format('png')
               ->generate($course_name, public_path('images/qrcode.png'));
       
-        return view('qrCode')->with('course_name',$course_name);
+        return view('professor.qrCode')->with('course_name',$course_name);
     }
 }
