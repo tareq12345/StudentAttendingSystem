@@ -40,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Schema::defaultStringLength(191);
-        \URL::forceScheme('https');
+        // \URL::forceScheme('https');
         $this->registerPolicies(); 
         Passport::routes(); 
     }
